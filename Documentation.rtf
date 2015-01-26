@@ -1,0 +1,89 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1343\cocoasubrtf160
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \ul \ulc0 create.it framework Documentation\
+\
+\ulnone * Free to use.\
+* If you need a fast and small framework -> this is the one.\
+\
+The framework has two sections:\
+Application\
+System\
+\
+In application folder you will find your controller, model and view (mvc) as well as you configuration for routes and database connection.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 <----------------------------------------------------------------------------------------------------------------------------->\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+Most calls you will make can be use with automatic operations given from system.\
+System methods can be used in your controllers, models and views, or any function you want within this framework:\
+\
+
+\b \
+View\
+
+\b0 \ul Render a view\ulnone : View::load(\'91page\'92)->render();\
+\ul Render a view with variables\ulnone : View::load(\'91page\'92)->set(\'91key\'92, $value);\
+\
+
+\b Url\
+
+\b0 \ul Base url\ulnone : URL::base();\
+\ul Site url\ulnone : URL::site();\
+\ul Host url\ulnone : URL::host();\
+\
+
+\b Encode\
+
+\b0 \ul Decrypt\ulnone : Encode::decrypt(\'91your string or: \'92.$value);\
+\ul Decrypt\ulnone : Encode::encrypt(\'91your string or: \'92.$value);\
+\
+
+\b Cookies\
+
+\b0 \ul Set a cookie\ulnone : Cookies::set($name, $value, $expire, $path, $domain, $secure, $httponly); \'97\'97> name and value are nessesary.\
+\ul Get cookie\ulnone : Cookies::get(\'91cookieName\'92);\
+\ul Destroy cookie\ulnone : Cookies::delete(\'91cookieName\'92);\
+\
+
+\b Database\
+
+\b0 * Any interaction with database simply done with DB::query(\'91your sql\'92);\
+
+\b \
+
+\b0 \ul Select from db\ulnone : $sql = \'92SELECT * FROM `table`\'92;\
+			$res = DB::query($sql);\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \ul \ulc0 Insert from db\ulnone : $sql = \'92INSERT INTO `table`(`column`) VALUES ('$value\'92)\'92;\
+			$res = DB::query($sql);\
+\
+* Same will go for UPDATE and DELETE query.\
+\
+
+\b Session\
+
+\b0 \ul Set session\ulnone : Session::set(\'91key\'92, $value);\
+\ul Get key from session\ulnone : Session::get(\'91key\'92, $value);\
+\ul Delete key from session\ulnone : Session::delete(\'91key\'92);\
+\ul Destroy session\ulnone : Session::delete();\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 Save file\
+
+\b0 \ul Check if file valid\ulnone : $valid = Upload::valid($file); if($valid)\{\'85\}\
+\ul Type allowed\ulnone : Upload::type($file, array('jpg', 'jpeg', 'gif', 'png\'92);\
+\ul Save file\ulnone : Upload::save($file, \'91directory\'92);\
+\
+* for example:\
+$file = $_FILES[\'91keyName\'92];\
+if(Upload::valid($file) && Upload::type($file, array('jpg', 'jpeg', 'gif', 'png\'92)))\
+\{\
+	$filename = Upload::save($file, \'91directory\'92);\
+	echo $filename;\
+\}}
